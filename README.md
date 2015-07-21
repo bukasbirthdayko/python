@@ -13,11 +13,11 @@ sanity check will perform the following:
     9) delete project
 
 
-
-When verified working, these will be put as tasks on locustfile.py
-
     usages==============================================================================
 
         srenew.py - renew token (patch request) every 9 minutes
         stest.py - sanity check draft
         sdelassets.py - draft for deleting assets (to be added to sanity check/stest.py)
+
+
+When verified working, these will be put as tasks on locustfile.py
