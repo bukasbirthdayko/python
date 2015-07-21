@@ -1,4 +1,4 @@
-Sanity check draft
+SANITY CHECK DRAFT
 
 sanity check will perform the following:
 
