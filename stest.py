@@ -8,7 +8,7 @@ import datetime as dt
 import json
 
 #token = str(sys.argv[1])
-token = 'YmUyMjBkYzktMDM3OC00ZWYxLTljOTUtZGY5MzYzYzU4ZDk3'
+token = '{TOKEN}'
 stgurl = 'api-stg1.us-east-1.everywhere.avid.com'
 
 
