@@ -2,15 +2,32 @@
 
 
 from locust import HttpLocust, TaskSet, task
+import json
+import requests
 
-token = 'NDRhY2U3ZjYtNDY1OC00N2QzLWFkNzEtM2E5NGQ1NmM3YTUx'
+token = 'ZTdiMTE5NWUtMGRhNy00Yjk0LTkwZjEtYTViYTMwYjkzZDRh'
+stgurl = 'api-stg1.us-east-1.everywhere.avid.com'
 
 class MyTaskSet(TaskSet):
-    @task
-    def index(self):
+    @task(2)
+    def task1(self):
 	headers={"Content-Type": "application/json",
         "Authorization" : "Bearer (%s)" % (token) }
         self.client.patch("/services/avid.iam/tokens/current",headers=headers)
+
+    @task(1)
+    def task2(self):
+        headers={"Content-Type": "application/json",
+        "Authorization" : "Bearer (%s)" % (token) }
+	url = 'https://%s/services/avid.asset/assets'
+	data = {"alias" : "$date",
+        	"kind" : "asset" }
+	data = json.dumps(data)
+	r = requests.post(url=str(url) % (stgurl),data=data,headers=headers)
+	resp = json.loads(r.content.decode())
+	assetId = resp["assetId"]
+	url = 'https://%s/services/avid.asset/assets/%s'
+	r = requests.delete(url=str(url) %(stgurl,assetId),headers=headers)
 
 
 class MyLocust(HttpLocust):
