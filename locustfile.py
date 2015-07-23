@@ -5,7 +5,7 @@ from locust import HttpLocust, TaskSet, task
 import json
 import requests
 
-token = 'ZTdiMTE5NWUtMGRhNy00Yjk0LTkwZjEtYTViYTMwYjkzZDRh'
+token = '{TOKEN}'
 stgurl = 'api-stg1.us-east-1.everywhere.avid.com'
 
 class MyTaskSet(TaskSet):
